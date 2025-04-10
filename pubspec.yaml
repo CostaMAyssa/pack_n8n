@@ -1,6 +1,8 @@
 name: pack_n8n
-description: "A new Flutter project."
+description: "Pacote digital de recursos para criadores de conteúdo."
 publish_to: 'none'
+homepage: https://github.com/CostaMAyssa/pack_n8n
+repository: https://github.com/CostaMAyssa/pack_n8n
 
 version: 1.0.0+1
 
