@@ -11,7 +11,7 @@ import 'package:pack_n8n/utils/breakpoints/breakpoints.dart';
 
 class HomePage extends StatelessWidget {
   void _launchWhatsApp() async {
-    final Uri whatsappUrl = Uri.parse("https://wa.me/554399048475");
+    final Uri whatsappUrl = Uri.parse("https://wa.me/5564992334261");
     if (await canLaunchUrl(whatsappUrl)) {
       await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
     } else {

@@ -2,8 +2,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SupportSection extends StatelessWidget {
+  void _launchWhatsApp() async {
+    final Uri whatsappUrl = Uri.parse("https://wa.me/5564992334261");
+    if (await canLaunchUrl(whatsappUrl)) {
+      await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $whatsappUrl';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -77,12 +87,10 @@ class SupportSection extends StatelessWidget {
               size: 50, // Alterando o tamanho do ícone
             ),
             title: Text(
-              'WhatsApp',
+              'WhatsApp (64) 9233-4261',
               style: TextStyle(color: Colors.white),
             ),
-            onTap: () {
-              // Lógica para abrir link do WhatsApp
-            },
+            onTap: _launchWhatsApp,
           ),
           SizedBox(height: 40),
           ListTile(
