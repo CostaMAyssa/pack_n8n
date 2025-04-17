@@ -29,4 +29,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/image/logo.png  
+    - lib/image/logo.png
+    - assets/
+    - lib/image/image fluxos/
