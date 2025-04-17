@@ -3,6 +3,13 @@ import 'package:pack_n8n/feature/home/widgets/app_bar/web_app_bar_responsive_con
 
 
 class WebAppBar extends StatelessWidget {
+  final TextEditingController searchController;
+
+  const WebAppBar({
+    Key? key,
+    required this.searchController,
+  }) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -17,7 +24,7 @@ class WebAppBar extends StatelessWidget {
             width: 200, // Ajuste o tamanho da logo conforme necessário
           ),
           const SizedBox(width: 10),
-          WebAppBarResponsiveContent(),
+          WebAppBarResponsiveContent(searchController: searchController),
           const SizedBox(width: 15),
           IconButton(
             icon: Icon(Icons.shopping_cart),

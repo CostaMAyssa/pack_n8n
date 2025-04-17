@@ -9,7 +9,15 @@ import 'package:pack_n8n/feature/home/widgets/sections/footer.dart';
 import 'package:pack_n8n/feature/home/widgets/sections/support_section.dart';
 import 'package:pack_n8n/utils/breakpoints/breakpoints.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
+  String _searchQuery = '';
+
   void _launchWhatsApp() async {
     final Uri whatsappUrl = Uri.parse("https://wa.me/5564992334261");
     if (await canLaunchUrl(whatsappUrl)) {
@@ -17,6 +25,22 @@ class HomePage extends StatelessWidget {
     } else {
       throw 'Could not launch $whatsappUrl';
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(() {
+      setState(() {
+        _searchQuery = _searchController.text;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,7 +63,7 @@ class HomePage extends StatelessWidget {
                 child: ListView(
                   children: [            
                     SizedBox(height: 40),
-                    CategorySection(),
+                    CategorySection(searchQuery: _searchQuery),
                     SizedBox(height: 70),
                     AdvantagesSection(),
                     SizedBox(height: 70),
@@ -53,11 +77,16 @@ class HomePage extends StatelessWidget {
           ),
           appBar: constraints.maxWidth < mobileBreakpoint
               ? PreferredSize(
-                  child: MobileAppBar(),
+                  child: MobileAppBar(
+                    searchController: _searchController,
+                  ),
                   preferredSize: Size(double.infinity, 56),
                 )
               : PreferredSize(
-                  child: WebAppBar(), preferredSize: Size(double.infinity, 72)),
+                  child: WebAppBar(
+                    searchController: _searchController,
+                  ), 
+                  preferredSize: Size(double.infinity, 72)),
           drawer: constraints.maxWidth < mobileBreakpoint ? Drawer() : null,
           floatingActionButton: FloatingActionButton(
             onPressed: _launchWhatsApp,

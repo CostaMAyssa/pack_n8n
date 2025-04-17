@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; // Importando o pacote Google Fonts
 
 class WebAppBarResponsiveContent extends StatelessWidget {
+  final TextEditingController searchController;
+
+  const WebAppBarResponsiveContent({
+    Key? key,
+    required this.searchController,
+  }) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -30,6 +37,7 @@ class WebAppBarResponsiveContent extends StatelessWidget {
                       ),
                       Expanded(
                         child: TextField(
+                          controller: searchController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Buscar produto',

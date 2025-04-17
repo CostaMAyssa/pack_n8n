@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MobileAppBar extends StatelessWidget {
+  final TextEditingController searchController;
+
+  const MobileAppBar({
+    Key? key,
+    required this.searchController,
+  }) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -19,7 +26,13 @@ class MobileAppBar extends StatelessWidget {
       actions: [
         IconButton(
           icon: Icon(Icons.search),
-          onPressed: () {},
+          onPressed: () {
+            // Aqui podemos implementar a lógica de pesquisa ou abrir um diálogo
+            showSearch(
+              context: context,
+              delegate: _CustomSearchDelegate(searchController),
+            );
+          },
           color: Color(0xFFFE6A5A), // Cor vermelha para o ícone de pesquisa
         ),
         IconButton(
@@ -29,5 +42,45 @@ class MobileAppBar extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class _CustomSearchDelegate extends SearchDelegate<String> {
+  final TextEditingController searchController;
+
+  _CustomSearchDelegate(this.searchController);
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+          searchController.text = '';
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, '');
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    searchController.text = query;
+    return Container();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return Container();
   }
 }
