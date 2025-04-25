@@ -1,9 +1,0 @@
-version: "Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)"
-options: "30773877af673ad64ab80f2e2d11ee9a24eeee8f268b0aacf6b33343a52cc033"
-build_start_time: [1744902413, 719869136]
-build_end_time: [1744902455, 419852972]
-inputs:
-  ? "/Users/mayssaferreira/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2/macos/url_launcher_macos/Sources/url_launcher_macos/UrlLauncherPlugin.swift"
-  : [1738344762, 183102130]
-  ? "/Users/mayssaferreira/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2/macos/url_launcher_macos/Sources/url_launcher_macos/messages.g.swift"
-  : [1738344762, 426542043]
